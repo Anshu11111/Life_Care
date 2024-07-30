@@ -1,18 +1,24 @@
 import express from "express";
-import {
-  updateUser,
-  deleteUser,
-  getAllUser,
-  getSingleUser,
-} from "../Controllers/userController.js";
-
+import { 
+    updateUser, 
+    deleteUser, 
+    getAllUser, 
+    getSingleUser,
+    getUserProfile,
+    getMyAppointments
+ } from "../Controllers/userController.js";
 import { authenticate, restrict } from "../auth/verifyToken.js";
 
 const router = express.Router();
 
-router.get("/:id", authenticate, restrict(["patient"]), getSingleUser); // Protected route
-router.get("/", authenticate, restrict(["admin"]), getAllUser); // Public route
-router.put("/:id", authenticate, restrict(["patient"]), updateUser); // Protected route
-router.delete("/:id", authenticate, restrict(["patient"]), deleteUser); // Protected route
+// authenticate, restrict(['patient']), this added layer of security is crucial as it ensures only authorized people can edit and make changes
+router.get("/:id",authenticate, restrict(['patient']), getSingleUser);
+router.get("/",authenticate, restrict(['patient']), getAllUser);
+router.put("/:id",authenticate, restrict(['patient']), updateUser);
+router.delete("/:id",authenticate, restrict(['patient']), deleteUser);
+router.get("/profile/me",authenticate, restrict(['patient']), getUserProfile);
+router.get("/appointments/my-appointment",authenticate, restrict(['patient']), getMyAppointments);
+
+
 
 export default router;
