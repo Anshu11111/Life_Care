@@ -71,7 +71,7 @@ export const getDoctorProfile = async(req, res)=>{
     const doctorId = req.userId;
 
     try{
-        const doctor = await Doctor.findById(userId);
+        const doctor = await Doctor.findById(doctorId);
         if (!doctor){
         return res
             .status(404)

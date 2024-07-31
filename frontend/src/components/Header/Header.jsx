@@ -28,7 +28,7 @@ const Header = () => {
   const headerRef = useRef(null);
   const menuRef = useRef(null);
   const {user, role, token} = useContext(authContext);
-
+console.log(user);
   /**
    * @desc adds sticky header effect when user scrolls more than 80 px
    * @returns void
@@ -91,14 +91,14 @@ const Header = () => {
               token && user ? 
               (
               <div>
-                  <Link to={`${role === 'doctor'? '/doctor/profile/me' : '/users/profile/me'}`}>
+                  <Link to={`${role === 'doctor'? '/doctors/profile/me' : '/users/profile/me'}`}>
                     <figure className='w-[35px] h-[35px] rounded-full cursor-pointer'>        
                     <img 
-                        src={user? user.photo : 'photo'} 
+                        src={user ? user.photo : 'photo'} 
                         className='w-full h-[35px] rounded-full' 
                         alt='doctor' />
                     </figure>
-                    <h2>{user? user.name : 'welcome'}</h2>
+                    {/* <h2>{user? user.name : 'welcome'}</h2> */}
                   </Link>
                 </div> ) : (
               
