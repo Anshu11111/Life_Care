@@ -248,7 +248,7 @@ function Home() {
               unmatched,expert healthcare.
             </p>
           </div>
-          <DoctorList />
+          <DoctorList/>
         </div>
       </section>
 

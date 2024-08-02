@@ -7,11 +7,12 @@ import { useState } from "react";
 import starIcon from "../../assets/images/star.png";
 import DoctorAbout from "../../pages/Doctors/DoctorAbout";
 import Profile from "./Profile";
+import Appointments from "./Appointments";
 const Dashboard = () => {
   const { data, loading, error } = useFetchData(
     `${BASE_URL}/doctors/profile/me`
   );
-
+console.log(data);
   const [tab, setTab] = useState("overview");
   return (
     <section>
@@ -57,7 +58,7 @@ const Dashboard = () => {
                       </figure>
                       <div>
                         <span className="bg-[#CCF0F3] text-irisBlueColor py-1 px-4 text-[12px] leading-4 lg:text-[16px] lg:leading-6 font-semibold">
-                          Surgeon
+                        {data.specialization}
                         </span>
                         <h3 className="text-[22px] leading-9 font-bold text-headingColor">
                           {data.name}
@@ -65,14 +66,14 @@ const Dashboard = () => {
                         <div className="flex items-center gap-[6px]">
                           <span className="flex items-center gap-[6px] text-[14px] leading-6 lg:text-[16px] lg:leading-7 font-semibold text-headingColor">
                             <img src={starIcon} alt="Rating" className="mr-1" />
-                            4.5
+                            {data.averageRating}
                           </span>
                           <span className="text-[14px] leading-6 lg:text-[16px] lg:leading-7 font-[400] text-textColor">
-                            (233)
+                            {data.totalRating}
                           </span>
                         </div>
                         <p className="text_para font-[15px] lg:max-w-[390px] leading-6">
-                          doctor bio
+                          {data?.bio}
                         </p>
                       </div>
                     </div>
@@ -80,13 +81,13 @@ const Dashboard = () => {
                       name={data.name}
                       about={data.about}
                       qualifications={data.qualifications}
-                      expriences={data.expriences}
+                      experiences={data.experiences}
 
                       />
                   </div>
                 )}
-                {tab === "appointments" && <div>Appointments</div>}
-                {tab === "settings" && <Profile/> }
+                {tab === "appointments" && <Appointments appointments={data.appointments}/>}
+                {tab === "settings" && <Profile doctorData={data}/>  }
               </div>
             </div>
           </div>
