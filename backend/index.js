@@ -15,6 +15,7 @@ const corsOption = {
   origin: "http://localhost:5173",
   credentials:true,
   method:["GET","POST","PUT","DELETE"],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
 app.options('*',cors());
