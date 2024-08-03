@@ -28,7 +28,7 @@ const Header = () => {
   const headerRef = useRef(null);
   const menuRef = useRef(null);
   const {user, role, token} = useContext(authContext);
-console.log(user);
+
   /**
    * @desc adds sticky header effect when user scrolls more than 80 px
    * @returns void

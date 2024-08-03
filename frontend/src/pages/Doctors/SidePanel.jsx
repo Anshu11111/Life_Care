@@ -2,6 +2,7 @@ import React from "react";
 import convertTime from "../../utils/convertTime";
 import { BASE_URL } from "../../utils/congig";
 import { toast } from "react-toastify";
+import { token } from "../../utils/congig";
 const SidePanel = ({ doctorId, ticketprice, timeSlots }) => {
 
   const bookingHandler = async () => {
@@ -14,10 +15,10 @@ const SidePanel = ({ doctorId, ticketprice, timeSlots }) => {
           'Content-Type': 'application/json', // Ensure the Content-Type is set
         },
       });
-  
+     console.log(res);
       // Parse the response as JSON
       const data = await res.json();
-  
+ 
       // Check if the response was successful
       if (!res.ok) {
         throw new Error(data.message || 'Please try again');

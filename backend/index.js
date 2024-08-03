@@ -12,8 +12,12 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 const corsOption = {
-  origin: true,
+  origin: "http://localhost:5173",
+  credentials:true,
+  method:["GET","POST","PUT","DELETE"],
 };
+
+app.options('*',cors());
 mongoose.set("strictQuery", false);
 const connectDB = async () => {
   try {

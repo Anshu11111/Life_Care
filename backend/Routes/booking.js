@@ -6,5 +6,4 @@ const router = express.Router();
 
 // Route to handle the creation of a Stripe Checkout session
 router.post('/checkout-session/:doctorId', authenticate, getCheckoutSession);
-
 export default router;

@@ -17,7 +17,7 @@ const DoctorDetails = () => {
     loading,
     error,
   } = useFetchData(`${BASE_URL}/doctors/${id}`);
-
+  console.log(doctor);
   const {
     name,
     email,
@@ -33,7 +33,7 @@ const DoctorDetails = () => {
     photo,
     reviews,
   } = doctor;
- console.log(ticketprice);
+ 
   return (
     <section>
       <div className="max-w-[1170px] px-5 mx-auto">

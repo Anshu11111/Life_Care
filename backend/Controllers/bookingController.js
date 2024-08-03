@@ -9,22 +9,24 @@ export const getCheckoutSession = async (req, res) => {
     const doctor = await Doctor.findById(req.params.doctorId);
     const user = await User.findById(req.userId);
 
+    // console.log(user);
+    console.log(doctor);
     // Initialize Stripe with your secret key
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
+// console.log(stripe);
     // Create Stripe Checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
-      success_url: `${process.env.CLIENT_SITE_URL}/checkout-success`,
+      success_url: 'http://localhost:5173/checkout-success',
       cancel_url: `${req.protocol}://${req.get('host')}/doctors/${doctor.id}`,
       customer_email: user.email,
       client_reference_id: req.params.doctorId,
       line_items: [
         {
           price_data: {
-            currency: 'bdt',
-            unit_amount: doctor.ticketPrice * 100, // Stripe expects the amount in the smallest currency unit (e.g., cents)
+            currency: 'usd',
+            unit_amount: doctor.ticketprice * 100, // Stripe expects the amount in the smallest currency unit (e.g., cents)
             product_data: {
               name: doctor.name,
             },
@@ -38,7 +40,7 @@ export const getCheckoutSession = async (req, res) => {
     const booking = new Booking({
       doctor: doctor._id,
       user: user._id,
-      ticketPrice: doctor.ticketPrice,
+      ticketPrice: doctor.ticketprice,
       session: session.id,
     });
     await booking.save();
