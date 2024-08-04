@@ -18,7 +18,7 @@ export const getCheckoutSession = async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
-      success_url: 'http://localhost:5173/checkout-success',
+      success_url: 'https://lifecare-doctor-appointment.netlify.app/checkout-success',
       cancel_url: `${req.protocol}://${req.get('host')}/doctors/${doctor.id}`,
       customer_email: user.email,
       client_reference_id: req.params.doctorId,
