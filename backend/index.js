@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 const corsOption = {
-  origin: "https://lifecare-doctor-appointment.netlify.app/",
+  origin: "https://lifecare-doctor-appointment.netlify.app",
   credentials:true,
   method:["GET","POST","PUT","DELETE"],
   allowedHeaders: ['Content-Type', 'Authorization'],
