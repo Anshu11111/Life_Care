@@ -4,7 +4,7 @@ import Tabs from "./Tabs";
 import useFetchData from "../../../hooks/useFetchData";
 import { BASE_URL } from "../../utils/congig";
 import { useState } from "react";
-import starIcon from "../../assets/images/star.png";
+import starIcon from "../../assets/images/Star.png";
 import DoctorAbout from "../../pages/Doctors/DoctorAbout";
 import Profile from "./Profile";
 import Appointments from "./Appointments";
