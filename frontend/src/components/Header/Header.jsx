@@ -36,9 +36,9 @@ const Header = () => {
   const handleStickyHeader = () =>{
     window.addEventListener('scroll', () => {
       if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 80){
-        headerRef.current.classList.add('sticky__header');
+        headerRef.current.classList.add('sticky_header');
       }else{
-        headerRef.current.classList.remove('sticky__header');
+        headerRef.current.classList.remove('sticky_header');
       }
     });  
   };
@@ -57,7 +57,7 @@ const Header = () => {
   * 
   */
 
-  const toggleMenu = () => menuRef.current.classList.toggle('show__menu');
+  const toggleMenu = () => menuRef.current.classList.toggle('show_menu');
 
   return (
     <header className='header flex items-center'ref={headerRef}>
